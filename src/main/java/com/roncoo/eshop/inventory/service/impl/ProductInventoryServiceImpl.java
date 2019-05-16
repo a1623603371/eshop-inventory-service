@@ -2,6 +2,7 @@ package com.roncoo.eshop.inventory.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.session.SessionProperties;
 import org.springframework.stereotype.Service;
 
 import com.roncoo.eshop.inventory.mapper.ProductInventoryMapper;
@@ -38,7 +39,21 @@ public class ProductInventoryServiceImpl implements ProductInventoryService {
 	}
 
 	public ProductInventory findById(Long id) {
+
 		return productInventoryMapper.findById(id);
 	}
+
+    @Override
+    public ProductInventory findByProductId(Long productId) {
+        Jedis jedis=jedisPool.getResource();
+      String dataJOSN= jedis.get("product_inventory_"+productId);
+      if (dataJOSN!=null&&!"".equals(dataJOSN)){
+          JSONObject dataJSONObject=JSONObject.parseObject(dataJOSN);
+          dataJSONObject.put("id","-1");
+          return JSONObject.parseObject(dataJOSN,ProductInventory.class);
+      }else {
+            return productInventoryMapper.findById(productId);
+        }
+    }
 
 }
