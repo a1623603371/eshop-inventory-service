@@ -65,7 +65,7 @@ public class ProductInventoryController {
     @ResponseBody
     public ProductInventory findByProductId(Long productId){
         try {
-            return productInventoryService.findById(productId);
+            return productInventoryService.findByProductId(productId);
         } catch (Exception e) {
             e.printStackTrace();
         }

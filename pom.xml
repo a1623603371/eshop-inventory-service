@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.roncoo.eshop</groupId>
-    <artifactId>eshop.inventory.service</artifactId>
+    <artifactId>eshop-inventory-service</artifactId>
     <version>1.0-SNAPSHOT</version>
 <packaging>jar</packaging>
     <parent>
@@ -72,7 +72,11 @@
             <artifactId>jedis</artifactId>
         </dependency>
     </dependencies>
+<<<<<<< HEAD
     <build>
+=======
+     <build>
+>>>>>>> 52a928a7fe8582ba4963b6e549e97f8a0ba283a4
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -81,4 +85,8 @@
         </plugins>
     </build>
 
+<<<<<<< HEAD
 </project>
+=======
+</project>
+>>>>>>> 52a928a7fe8582ba4963b6e549e97f8a0ba283a4
